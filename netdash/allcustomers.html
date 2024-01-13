@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <title>Network Performance Dashboard</title>
+</head>
+<body>
+    <div class="sidendcontent">
+        <div class="content">
+            <nav class="sidebar-customer">
+                <ul>
+                    <li><a href="home.html"><img src='images/home.png' alt="Home">Home</a></li>
+                    <li><a href="customers.php"><img src='images/customer.png' alt="Customers">Customers</a></li>
+                    <li><a href="dashboard.html"><img src='images/dashboard.png' alt="Dashboard">Dashboard</a></li>
+                    <li><a href="contact.php"><img src='images/contact.png' alt="Dashboard" />Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="app">
+            <header class="header">
+                <div class="logo">
+                    <a href="https://www.huawei.com/en/" target="_blank"><img src='images/huawei.png' alt="Huawei Logo"></a>
+                </div>
+                <div class="title">
+                    <h1 class="page-title">Network Performance Dashboard</h1>
+                </div>
+                <div class="auth">
+                    <img src='images/login.png' alt="Login">
+                </div>
+            </header>
+            <div class="divider"></div>
+
+            
+            <div class="allheader">
+                <h2>Dashboard for All customers : Choose KPI</h2>
+            </div>
+            <div id="chartButtons"  class="buttons-div">
+                <button class="buttons" onclick="displayChart('ossChart')">OSS Score Chart</button>
+                <button class="buttons" onclick="displayChart('p3Chart')">P3 Score Chart</button>
+                <button class="buttons" onclick="displayChart('gtsChart')">GTS Score Chart</button>
+                <button class="buttons" onclick="displayChart('rankingChart')">Rank Chart</button>
+            </div>
+
+            <div id="chartContainerOSS" style="height: 350px; width: 95%; margin-left: 20px; margin-top: 20px;"></div>
+            <div id="chartContainerRanking" style="height: 350px; width: 95%; display: none; margin-left: 20px; margin-top: 20px;"></div>
+            <div id="chartContainerP3" style="height: 350px; width: 95%; display: none; margin-left: 20px;margin-top: 20px;"></div>
+            <div id="chartContainerGTS" style="height: 350px; width: 95%; display: none; margin-left: 20px;margin-top: 20px;"></div>
+           
+            <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+
+    <script>
+        var ossChart = new CanvasJS.Chart("chartContainerOSS", {
+            animationEnabled: true,
+            backgroundColor: "#191B3C",
+            title: {
+                text: "OSS KPI Dashboard",
+                fontFamily: 'Montserrat',
+                fontSize: 24,
+                fontColor: 'white'
+            },
+            axisX: {
+                valueFormatString: "MMM",
+                minimum: new Date(2023, 0),
+                maximum: new Date(2023, 5),
+                lineColor: "white",
+                labelFontColor: "white",
+                titleFontColor: "white",
+                fontFamily: 'Montserrat'
+            },
+            axisY: {
+                title: "OSS Score",
+                titleFontColor: "white",
+                lineColor: "white",
+                labelFontColor: "white",
+                fontFamily: 'Montserrat'
+            },
+            legend: {
+                verticalAlign: "top",
+                horizontalAlign: "right",
+                dockInsidePlotArea: true,
+                fontColor: "white",
+                fontFamily: 'Montserrat'
+            },
+            toolTip: {
+                shared: false,
+                fontColor: "#FFDF9A",
+                borderColor: "#FFDF9A",
+                backgroundColor: "#191B3C",
+                cornerRadius: 5
+            },
+            data: [
+            {
+            name: "Orange Tunisia",
+            showInLegend: true,
+            legendMarkerType: "square",
+            type: "line",
+            color: "rgb(135, 206, 235)",
+            markerSize: 7,
+            dataPoints: [
+                { x: new Date(2023, 0), y: 56 },
+                { x: new Date(2023, 1), y: 95 },
+                { x: new Date(2023, 2), y: 72 },
+                { x: new Date(2023, 3), y: 96 },
+                { x: new Date(2023, 4), y: 75 },
+                { x: new Date(2023, 5), y: 89 }
+            ]
+            },
+            {
+            name: "Algeria OTA",
+            showInLegend: true,
+            legendMarkerType: "square",
+            type: "line",
+            color: "rgba(255, 255, 51, 1)",
+            markerSize: 7,
+            dataPoints: [
+                { x: new Date(2023, 0), y: 82 },
+                { x: new Date(2023, 1), y: 87},
+                { x: new Date(2023, 2), y: 51},
+                { x: new Date(2023, 3), y: 15 },
+                { x: new Date(2023, 4), y: 70 },
+                { x: new Date(2023, 5), y: 97 }
+            ]
+            },
+            {
+            name: "Libya Libyana",
+            showInLegend: true,
+            legendMarkerType: "square",
+            type: "line",
+            color: "rgb(0, 255, 0)",
+            markerSize: 7,
+            dataPoints: [
+                { x: new Date(2023, 0), y: 0 },
+                { x: new Date(2023, 1), y: 42},
+                { x: new Date(2023, 2), y: 57},
+                { x: new Date(2023, 3), y: 60 },
+                { x: new Date(2023, 4), y: 51 },
+                { x: new Date(2023, 5), y: 9 }
+            ]
+            }
+            ]
+            });
+
+
+
+            var p3Chart = new CanvasJS.Chart("chartContainerP3", {
+            animationEnabled: true,
+            backgroundColor: "#191B3C",
+            title: {
+                text: "P3 KPI Dashboard",
+                fontFamily: 'Montserrat',
+                fontSize: 24,
+                fontColor: 'white'
+            },
+            axisX: {
+                valueFormatString: "MMM",
+                minimum: new Date(2023, 0),
+                maximum: new Date(2023, 5),
+                lineColor: "white",
+                labelFontColor: "white",
+                titleFontColor: "white",
+                fontFamily: 'Montserrat'
+            },
+            axisY: {
+                title: "P3 Score",
+                titleFontColor: "white",
+                lineColor: "white",
+                labelFontColor: "white",
+                fontFamily: 'Montserrat'
+            },
+            legend: {
+                verticalAlign: "top",
+                horizontalAlign: "right",
+                dockInsidePlotArea: true,
+                fontColor: "white",
+                fontFamily: 'Montserrat'
+            },
+            toolTip: {
+                shared: false,
+                fontColor: "#FFDF9A",
+                borderColor: "#FFDF9A",
+                backgroundColor: "#191B3C",
+                cornerRadius: 5
+            },
+            data: [
+            {
+            name: "Orange Tunisia",
+            showInLegend: true,
+            legendMarkerType: "square",
+            type: "line",
+            color: "rgb(135, 206, 235)",
+            markerSize: 7,
+            dataPoints: [
+                { x: new Date(2023, 0), y: 746},
+                { x: new Date(2023, 1), y: 829},
+                { x: new Date(2023, 2), y: 756.6},
+                { x: new Date(2023, 3), y: 952.63},
+                { x: new Date(2023, 4), y: 813},
+                { x: new Date(2023, 5), y: 970.63}
+            ]
+            },
+            {
+            name: "Algeria OTA",
+            showInLegend: true,
+            legendMarkerType: "square",
+            type: "line",
+            color: "rgba(255, 255, 51, 1)",
+            markerSize: 7,
+            dataPoints: [
+                { x: new Date(2023, 0), y: 821.63},
+                { x: new Date(2023, 1), y: 910},
+                { x: new Date(2023, 2), y: 450.63},
+                { x: new Date(2023, 3), y: 469.69},
+                { x: new Date(2023, 4), y: 852.71},
+                { x: new Date(2023, 5), y: 994.95}
+            ]
+            },
+            {
+            name: "Libya Libyana",
+            showInLegend: true,
+            legendMarkerType: "square",
+            type: "line",
+            color: "rgb(0, 255, 0)",
+            markerSize: 7,
+            dataPoints: [
+                { x: new Date(2023, 0), y: 620.63 },
+                { x: new Date(2023, 1), y: 512},
+                { x: new Date(2023, 2), y: 642},
+                { x: new Date(2023, 3), y: 463 },
+                { x: new Date(2023, 4), y: 529 },
+                { x: new Date(2023, 5), y: 240 }
+            ]
+            }
+            ]
+            });
+
+
+            var gtsChart = new CanvasJS.Chart("chartContainerGTS", {
+            animationEnabled: true,
+            backgroundColor: "#191B3C",
+            title: {
+                text: "GTS KPI Dashboard",
+                fontFamily: 'Montserrat',
+                fontSize: 24,
+                fontColor: 'white'
+            },
+            axisX: {
+                valueFormatString: "MMM",
+                minimum: new Date(2023, 0),
+                maximum: new Date(2023, 5),
+                lineColor: "white",
+                labelFontColor: "white",
+                titleFontColor: "white",
+                fontFamily: 'Montserrat'
+            },
+            axisY: {
+                title: "GTS Score (%)",
+                titleFontColor: "white",
+                lineColor: "white",
+                labelFontColor: "white",
+                fontFamily: 'Montserrat'
+            },
+            legend: {
+                verticalAlign: "top",
+                horizontalAlign: "right",
+                dockInsidePlotArea: true,
+                fontColor: "white",
+                fontFamily: 'Montserrat'
+            },
+            toolTip: {
+                shared: false,
+                fontColor: "#FFDF9A",
+                borderColor: "#FFDF9A",
+                backgroundColor: "#191B3C",
+                cornerRadius: 5
+            },
+            data: [
+            {
+            name: "Orange Tunisia",
+            showInLegend: true,
+            legendMarkerType: "square",
+            type: "line",
+            color: "rgb(135, 206, 235)",
+            markerSize: 7,
+            dataPoints: [
+                { x: new Date(2023, 0), y: 50},
+                { x: new Date(2023, 1), y: 95},
+                { x: new Date(2023, 2), y: 78},
+                { x: new Date(2023, 3), y: 100},
+                { x: new Date(2023, 4), y: 81},
+                { x: new Date(2023, 5), y: 89}
+            ]
+            },
+            {
+            name: "Algeria OTA",
+            showInLegend: true,
+            legendMarkerType: "square",
+            type: "line",
+            color: "rgba(255, 255, 51, 1)",
+            markerSize: 7,
+            dataPoints: [
+                { x: new Date(2023, 0), y: 100},
+                { x: new Date(2023, 1), y: 99},
+                { x: new Date(2023, 2), y: 39},
+                { x: new Date(2023, 3), y: 50},
+                { x: new Date(2023, 4), y: 75},
+                { x: new Date(2023, 5), y: 95}
+            ]
+            },
+            {
+            name: "Libya Libyana",
+            showInLegend: true,
+            legendMarkerType: "square",
+            type: "line",
+            color: "rgb(0, 255, 0)",
+            markerSize: 7,
+            dataPoints: [
+                { x: new Date(2023, 0), y: 75 },
+                { x: new Date(2023, 1), y: 53},
+                { x: new Date(2023, 2), y: 52},
+                { x: new Date(2023, 3), y: 63 },
+                { x: new Date(2023, 4), y: 81.9 },
+                { x: new Date(2023, 5), y: 47 }
+            ]
+            }
+            ]
+            });
+
+
+            
+        var rankingChart = new CanvasJS.Chart("chartContainerRanking", {
+            animationEnabled: true,
+            backgroundColor: "#191B3C",
+            title: {
+                text: "Ranking Dashboard",
+                fontFamily: 'Montserrat',
+                fontSize: 24,
+                fontColor: 'white'
+            },
+            axisX: {
+                valueFormatString: "MMM",
+                minimum: new Date(2023, 0),
+                maximum: new Date(2023, 5),
+                lineColor: "white",
+                labelFontColor: "white",
+                titleFontColor: "white",
+                fontFamily: 'Montserrat'
+            },
+            axisY: {
+                title: "Rank",
+                reversed: true,
+                titleFontColor: "white",
+                lineColor: "white",
+                labelFontColor: "white",
+                fontFamily: 'Montserrat'
+            },
+            legend: {
+                verticalAlign: "top",
+                horizontalAlign: "right",
+                dockInsidePlotArea: true,
+                fontColor: "white",
+                fontFamily: 'Montserrat'
+            },
+            toolTip: {
+                shared: false,
+                fontColor: "#FFDF9A",
+                borderColor: "#FFDF9A",
+                backgroundColor: "#191B3C",
+                cornerRadius: 5
+            },
+            data: [
+            {
+            name: "Orange Tunisia",
+            showInLegend: true,
+            legendMarkerType: "square",
+            type: "line",
+            color: "rgb(135, 206, 235)",
+            markerSize: 7,
+            dataPoints: [
+                { x: new Date(2023, 0), y: 2 },
+                { x: new Date(2023, 1), y: 1 },
+                { x: new Date(2023, 2), y: 1 },
+                { x: new Date(2023, 3), y: 1 },
+                { x: new Date(2023, 4), y: 4 },
+                { x: new Date(2023, 5), y: 2 }
+            ]
+        },
+        {
+            name: "Algeria OTA",
+            showInLegend: true,
+            legendMarkerType: "square",
+            type: "line",
+            color: "rgba(255, 255, 51, 1)",
+            markerSize: 7,
+            dataPoints: [
+                { x: new Date(2023, 0), y: 3 },
+                { x: new Date(2023, 1), y: 2},
+                { x: new Date(2023, 2), y: 14},
+                { x: new Date(2023, 3), y: 18 },
+                { x: new Date(2023, 4), y: 5 },
+                { x: new Date(2023, 5), y: 1 }
+            ]
+        },
+        {
+            name: "Libya Libyana",
+            showInLegend: true,
+            legendMarkerType: "square",
+            type: "line",
+            color: "rgb(0, 255, 0)",
+            markerSize: 7,
+            dataPoints: [
+            { x: new Date(2023, 0), y: 17 },
+                { x: new Date(2023, 1), y: 14},
+                { x: new Date(2023, 2), y: 16},
+                { x: new Date(2023, 3), y: 19 },
+                { x: new Date(2023, 4), y: 22 },
+                { x: new Date(2023, 5), y: 24 }
+            ]
+        }
+            ]
+        });
+
+        function displayChart(chartType) {
+            if (chartType === 'ossChart') {
+                document.getElementById("chartContainerOSS").style.display = "block";
+                document.getElementById("chartContainerRanking").style.display = "none";
+                document.getElementById("chartContainerP3").style.display = "none";
+                document.getElementById("chartContainerGTS").style.display = "none";
+                ossChart.render();
+            } else if (chartType === 'rankingChart') {
+                document.getElementById("chartContainerRanking").style.display = "block";
+                document.getElementById("chartContainerOSS").style.display = "none";
+                document.getElementById("chartContainerP3").style.display = "none";
+                document.getElementById("chartContainerGTS").style.display = "none";
+                rankingChart.render();
+            } else if (chartType === 'p3Chart') {
+                document.getElementById("chartContainerP3").style.display = "block";
+                document.getElementById("chartContainerOSS").style.display = "none";
+                document.getElementById("chartContainerRanking").style.display = "none";
+                document.getElementById("chartContainerGTS").style.display = "none";
+                p3Chart.render();
+            } else if (chartType === 'gtsChart') {
+                document.getElementById("chartContainerGTS").style.display = "block";
+                document.getElementById("chartContainerP3").style.display = "none";
+                document.getElementById("chartContainerOSS").style.display = "none";
+                document.getElementById("chartContainerRanking").style.display = "none";
+                gtsChart.render();
+            }
+        }
+    </script>
+ </div>
+
+ <footer>
+    <p>&copy; 2023 Huawei. All rights reserved. | Developed by Elyes Besbes - Summer Internship 2023 -
+      <a href="https://www.facebook.com/elyes.besbes.7/" target="_blank" class="footerimg"><img src='images/Facebook-me.png' alt="FB" /></a>
+      <a href="https://www.instagram.com/ely__bes/?hl=fr" target="_blank" class="footerimg"><img src='images/Instagram-me.png' alt="INST" /></a>
+      <a href="https://www.linkedin.com/in/elyes-besbes-ict-engineer/" target="_blank" class="footerimg"><img src='images/LinkedIn-me.png' alt="LN" /></a>
+    </p>
+  </footer>       
+</body>
+</html>
