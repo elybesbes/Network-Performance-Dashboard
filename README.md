@@ -6,12 +6,12 @@ I developed a dashboard for a telecommunication provider to monitor clients' net
 
 ## Technologies Used
 
-- Front-end: HTML, CSS, JavaScript
+- Front-end: HTML and CSS
 - Charts: Charts.js API
 - Mail on contact us : PHP mailer
 - Back-end: PHP
 - Database: MySQL
-- Development Environment: XAMPP
+- Development Environment: XAMPP & Visual Studio Code
 
 ## Features
 
